@@ -39,7 +39,7 @@ const NavBar = ()=> {
                     <div
                         className={`absolute md:hidden top-24 left-0 rounded-xl py-8 w-full flex flex-col
                         bg-gray-300 items-center gap-6 font-semibold text-lg transform
-                        transition-transform ${isMenuOpen ? "opacity-100" : "opacity-0"}`}
+                        transition-transform ${isMenuOpen ? "opacity-90" : "opacity-0"}`}
                         style={{transition: 'transform 0.3s ease, opacity 0.3s ease'}}
                     >
                         <NavLink 

@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "image": "./src/images/img3.jpg",
+        "title":"Project 1",
+        "info": "Motivated and eager to learn Junior Front-End Developer with a strong foundation in HTML/CSS and Javascript. Passionate about creating visually appealing and user friendly web applications. Familiar with Front-End frameworks and libraries such as React.Js. Commited to staying up to date with the latest web-developement trends and best practices."
+    },
+    {
+        "id": 2,
+        "image": "./src/images/img4.jpeg",
+        "title":"Project 2",
+        "info": "Motivated and eager to learn Junior Front-End Developer with a strong foundation in HTML/CSS and Javascript. Passionate about creating visually appealing and user friendly web applications. Familiar with Front-End frameworks and libraries such as React.Js. Commited to staying up to date with the latest web-developement trends and best practices."
+    },
+    {
+        "id": 3,
+        "image": "./src/images/img5.jpeg",
+        "title":"Project 3",
+        "info": "Motivated and eager to learn Junior Front-End Developer with a strong foundation in HTML/CSS and Javascript. Passionate about creating visually appealing and user friendly web applications. Familiar with Front-End frameworks and libraries such as React.Js. Commited to staying up to date with the latest web-developement trends and best practices."
+    }
+]
