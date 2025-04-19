@@ -9,6 +9,11 @@ const Project = ({ item }) => {
                 alt={item.title}
             />
             <h2 className='text-2xl text-center font-bold'>{item.title}</h2>
+            <p 
+                className="text-gray-900 "
+            >
+                {item.details}
+            </p>
             <div className='flex items-center space-x-5'>
                 <button className='border-2 px-6 py-3 rounded-3xl'>GitHub</button>
                 <button className='border-2 px-6 py-3 rounded-3xl'>Live Demo</button>

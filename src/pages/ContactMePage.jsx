@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ContactMePage = () => {
+  const [form, setForm] = useState(
+    {
+      fullName: "",
+      email: "" ,
+      phoneNumber: "",
+      subject: "",
+      message: ""
+    }
+  )
+
+  const handleChange = (e)=> {
+    const {name, value}= e.target;
+      setForm((preVal => {
+        return {
+          ...preVal,
+          [name]: value
+        }
+      }))
+  }
   return (
     <section className="mt-32 py-6 px-4">
       <div className="container border w-2/3 py-8 px-6 m-auto md:w-2/4 rounded-lg shadow-md">
@@ -8,16 +27,19 @@ const ContactMePage = () => {
           Contact <span style={{ color: "orangered" }}>Me</span>
         </h1>
         <div className=" w-full">
-        <form action="" className="flex flex-col m-auto space-y-5 py-4 px-5">
+        <form className="flex flex-col m-auto space-y-5 py-4 px-5">
           <div>
             <label 
                 className="block mb-2 text-gray-600 font-bold"
-                htmlFor="fullname">Full Name</label>
-            <input 
-                type="text"
-                className="border text-gray-600 rounded-lg py-2 px-3 w-full focus:outline-none"
-                name="fullName"
-             /> 
+                htmlFor="fullName">Full Name</label>
+          <input 
+            type="text"
+            className="border text-gray-600 rounded-lg py-2 px-3 w-full focus:outline-none"
+            id="fullName"
+            name="fullName"
+            value={form.fullName}
+            onChange={handleChange}
+          />
           </div>
           <div>
             <label 
@@ -25,40 +47,51 @@ const ContactMePage = () => {
                 htmlFor="email">Email</label>
             <input 
                 type="email"
+                id="email"
                 className="border text-gray-600 rounded-lg py-2 px-3 w-full focus:outline-none"
                 name="email"
+                value={form.email}
+                onChange={handleChange}
              />
           </div>
           <div>
             <label 
                 className="block mb-2 text-gray-600 font-bold"
-                htmlFor="phonenumber">Phone Number</label>
+                htmlFor="phoneNumber">Phone Number</label>
             <input 
-                type="number"
+                type="tel"
+                id="phoneNumber"
                 className="border text-gray-600 rounded-lg py-2 px-3 w-full focus:outline-none"
                 name="phoneNumber"
+                value={form.phoneNumber}
+                onChange={handleChange}
              />
           </div>
           <div>
             <label 
                 className="block mb-2 text-gray-600 font-bold"
-                htmlFor="fullName">Subject</label>
+                htmlFor="subject">Subject</label>
             <input 
                 type="text" 
+                id="subject"
                 className="border text-gray-600 rounded-lg py-2 px-3 w-full focus:outline-none"
                 name="subject"
+                value={form.subject}
+                onChange={handleChange}
             />
           </div>
           <div>
             <label 
                 className="block mb-2 text-gray-600 font-bold"
-                htmlFor="fullName">Your Message</label>
+                htmlFor="message">Your Message</label>
             <textarea
                 className="border text-gray-600 w-full rounded-lg focus:outline-none py-2 px-3"
                 name="message" 
                 placeholder="Type your message...."
-                id=""
+                id="message"
                 rows={4}
+                value={form.message}
+                onChange={handleChange}
             >
             </textarea>
           </div>

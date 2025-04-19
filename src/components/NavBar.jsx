@@ -3,10 +3,10 @@ import { Link, NavLink } from "react-router-dom";
 import { IoMdMenu } from "react-icons/io";
 
 const NavBar = ()=> {
-    const [isMenuOpen, setIsmenuOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const activeClass = ({ isActive })=> {
-        return isActive ? "text-orange-400 py-3 px-2 bg-orange-500/50 rounded-xl text-gray-300" 
+        return isActive ? "text-white py-3 px-2 bg-orange-500/50 rounded-xl text-gray-300" 
                         : 
                         "hover:text-orange-600 py-3 px-2"
     }
@@ -34,25 +34,28 @@ const NavBar = ()=> {
                     </div>
                     <IoMdMenu
                         className=" text-4xl text-gray-200 cursor-pointer ml-16 md:hidden"
-                        onClick={() => setIsmenuOpen(!isMenuOpen)}
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
                     />
                     <div
                         className={`absolute md:hidden top-24 left-0 rounded-xl py-8 w-full flex flex-col
-                        bg-gray-300 items-center gap-6 font-semibold text-lg transform
-                        transition-transform ${isMenuOpen ? "opacity-90" : "opacity-0"}`}
-                        style={{transition: 'transform 0.3s ease, opacity 0.3s ease'}}
+                        bg-gray-300 items-center gap-6 font-semibold text-lg z-50 transform
+                        transition-all duration-300 ease-in-out ${isMenuOpen ? "opacity-90 visible transalte-y-0" : "opacity-0 invisible -translate-y-2"}`}
+
                     >
                         <NavLink 
                             to="/"
                             className={activeClass}
+                            onClick={() => setIsMenuOpen(false)}
                         >Home</NavLink>
                         <NavLink 
                             to="/about"
-                            className={activeClass} 
+                            className={activeClass}
+                            onClick={() => setIsMenuOpen(false)} 
                         >About Me</NavLink>
                         <NavLink 
                             to="/projects"
-                            className={activeClass} 
+                            className={activeClass}
+                            onClick={() => setIsMenuOpen(false)} 
                         >Projects</NavLink>
                     </div>
 
