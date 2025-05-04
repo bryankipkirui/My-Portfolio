@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Route, 
           createBrowserRouter, 
           createRoutesFromElements,
@@ -12,7 +12,10 @@ import ContactMePage from "./pages/ContactMePage";
 import Projects from "./pages/Projects";
 
 
+
+
 function App() {
+  
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<MainPage />}>
     <Route index element={<HomePage />}/>

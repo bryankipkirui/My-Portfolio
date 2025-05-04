@@ -1,12 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import image from "../images/img2.jpg"
 import Linker from './Linker'
-import datas from '../data.json'
 
 const Hero = () => {
+    const [statement, setStatement] = useState("");
     const [showMore, setShowMore] = useState(false);
 
-    const statement =datas[0]?.info;
+    useEffect(()=>{
+        const fetchData = async ()=>{
+            try {
+                const res = await fetch("http://localhost:8000/data");
+                if(!res.ok){
+                    throw new Error(`HTTP error! Status:, ${res.status}`)
+                }
+                const datas = await res.json();
+                setStatement(datas[0].info);
+                // console.log(datas[0].info);
+                
+            } catch (error) {
+                console.error("Error:", error);
+                
+            }
+          
+        }
+        fetchData();
+    }, [])
+
+    console.log(statement);
+    
     
 
     const description = !showMore ? statement.substring(0, 120) + "..." : statement;
@@ -33,9 +54,10 @@ const Hero = () => {
                             bg='bg-gray-900'
                         />
                         <Linker
-                            ref=''
+                            to='https://docs.google.com/document/d/1-fmMEjsd1JCCZmoUqE5s2j3qRX7plcd4/edit?usp=sharing&ouid=102215646855886584443&rtpof=true&sd=true'
                             text='Resume'
                             bg='bg-orange-600'
+                            isExternal={true}
                         />
                     </div>
                 </div>

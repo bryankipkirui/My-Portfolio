@@ -23,8 +23,9 @@ const Aboutme = () => {
             {description}
           </p>
           <Linker
-            ref="/projects"
-            text='Projects'
+            to="https://docs.google.com/document/d/1-fmMEjsd1JCCZmoUqE5s2j3qRX7plcd4/edit?usp=sharing&ouid=102215646855886584443&rtpof=true&sd=true"
+            text='Resume'
+            isExternal={true}
             bg='bg-orange-600'
           />
         </div>

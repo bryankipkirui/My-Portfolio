@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ContactMePage = () => {
   const [form, setForm] = useState(
@@ -10,6 +11,9 @@ const ContactMePage = () => {
       message: ""
     }
   )
+  // const[submission, setSubmission] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e)=> {
     const {name, value}= e.target;
@@ -20,6 +24,38 @@ const ContactMePage = () => {
         }
       }))
   }
+  const handleSubmission = async (e)=> {
+    e.preventDefault();
+    setIsSubmitting(true);
+   try {
+      const res = await fetch('http://localhost:3000/db',{
+        method: "POST",
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(form)
+      })
+      if(!res.ok){
+        throw new Error("HTTP request failed!", res.status)
+      }
+      const data = res.json();
+
+      setForm({
+        fullName: "",
+        email: "" ,
+        phoneNumber: "",
+        subject: "",
+        message: ""
+      })
+      navigate('/');
+   } catch (error) {
+    console.error(error);
+    
+   } finally{
+    setIsSubmitting(false);
+   }
+  }
+
   return (
     <section className="mt-32 py-6 px-4">
       <div className="container border w-2/3 py-8 px-6 m-auto md:w-2/4 rounded-lg shadow-md">
@@ -27,7 +63,7 @@ const ContactMePage = () => {
           Contact <span style={{ color: "orangered" }}>Me</span>
         </h1>
         <div className=" w-full">
-        <form className="flex flex-col m-auto space-y-5 py-4 px-5">
+        <form onSubmit={handleSubmission} className="flex flex-col m-auto space-y-5 py-4 px-5">
           <div>
             <label 
                 className="block mb-2 text-gray-600 font-bold"
@@ -95,10 +131,12 @@ const ContactMePage = () => {
             >
             </textarea>
           </div>
-          <input 
-            type="submit" 
+         <button 
             className="border px-3 py-2 rounded-lg cursor-pointer bg-orange-600 text-gray-600 font-bold"
-        />
+            disabled={isSubmitting}
+         >
+            {isSubmitting ? "Submitting..." : "Submit"}
+         </button>
         </form>
         </div>
       </div>
